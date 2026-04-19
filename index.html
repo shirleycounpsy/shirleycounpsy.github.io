@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    /* ============ RESET & BASE ============ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -71,16 +70,16 @@
 
     .nav-logo small {
       display: block;
-      font-size: 0.62rem;
+      font-size: 0.72rem;
       color: var(--muted);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       margin-top: 2px;
     }
 
     .nav-links { display: flex; gap: 2rem; }
 
     .nav-links a {
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       color: var(--mid);
       letter-spacing: 0.06em;
       transition: color 0.2s;
@@ -97,7 +96,6 @@
       overflow: hidden;
     }
 
-    /* blobs */
     .hero::before {
       content: '';
       position: absolute;
@@ -131,7 +129,7 @@
     }
 
     .hero-text {
-      padding: 4rem 3rem 4rem 3rem;
+      padding: 4rem 3rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -140,8 +138,8 @@
     }
 
     .hero-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
+      font-size: 0.85rem;        /* 改大：原 0.65rem */
+      letter-spacing: 0.18em;
       color: #6A8040;
       text-transform: uppercase;
       margin-bottom: 1.4rem;
@@ -156,7 +154,7 @@
     }
 
     .hero-quote {
-      font-size: 0.88rem;
+      font-size: 1rem;           /* 改大：原 0.88rem */
       color: var(--muted);
       line-height: 1.9;
       max-width: 280px;
@@ -168,7 +166,7 @@
       padding: 0.7rem 1.8rem;
       background: var(--pink);
       color: var(--cream);
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       border-radius: 999px;
       letter-spacing: 0.06em;
       width: fit-content;
@@ -184,19 +182,18 @@
     }
 
     .hero-byline-cn {
-      font-size: 0.82rem;
+      font-size: 0.95rem;        /* 改大：原 0.82rem */
       color: var(--mid);
       letter-spacing: 0.08em;
     }
 
     .hero-byline-en {
-      font-size: 0.82rem;
+      font-size: 0.78rem;        /* 改大：原 0.65rem */
       color: var(--pink);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       margin-top: 4px;
     }
 
-    /* hero image side */
     .hero-image {
       position: relative;
       background: #F5E8E4;
@@ -213,7 +210,6 @@
       object-position: 35% center;
     }
 
-    /* fallback leaf art if no image */
     .hero-leaf1 {
       position: absolute;
       bottom: 50px; left: 30px;
@@ -253,8 +249,8 @@
     }
 
     .band-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.22em;
+      font-size: 0.85rem;        /* 改大：原 0.65rem */
+      letter-spacing: 0.2em;
       color: #B8786A;
       text-transform: uppercase;
       margin-bottom: 1.2rem;
@@ -262,10 +258,10 @@
     }
 
     .band-quote {
-      font-size: 1.65rem;
-      line-height: 1.6;
+      font-size: 1.85rem;        /* 改大：原 1.65rem */
+      line-height: 1.7;
       color: var(--dark);
-      max-width: 620px;
+      max-width: 660px;
       margin: 0 auto;
       position: relative;
       letter-spacing: 0.02em;
@@ -277,7 +273,7 @@
     }
 
     .band-attr {
-      font-size: 0.75rem;
+      font-size: 0.85rem;        /* 改大：原 0.75rem */
       color: #B09090;
       margin-top: 1.4rem;
       letter-spacing: 0.08em;
@@ -292,27 +288,25 @@
       min-height: 260px;
     }
 
-    .sage-text {
-      padding: 3rem;
-    }
+    .sage-text { padding: 3rem; }
 
     .sage-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.85rem;        /* 改大：原 0.65rem */
+      letter-spacing: 0.18em;
       color: #4A5E38;
       text-transform: uppercase;
       margin-bottom: 0.7rem;
     }
 
     .sage-title {
-      font-size: 1.4rem;
+      font-size: 1.7rem;         /* 改大：原 1.4rem */
       line-height: 1.35;
       color: var(--sage-text);
       margin-bottom: 1rem;
     }
 
     .sage-body {
-      font-size: 0.82rem;
+      font-size: 0.95rem;        /* 改大：原 0.82rem */
       color: #404E30;
       line-height: 1.9;
       max-width: 360px;
@@ -326,9 +320,9 @@
     }
 
     .bubble {
-      padding: 0.32rem 1rem;
+      padding: 0.35rem 1rem;
       border-radius: 999px;
-      font-size: 0.76rem;
+      font-size: 0.88rem;        /* 改大：原 0.76rem */
       white-space: nowrap;
     }
 
@@ -371,20 +365,18 @@
     }
 
     /* ============ ARTICLES ============ */
-    .section {
-      padding: 3rem;
-    }
+    .section { padding: 3rem; }
 
     .section-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.2em;
+      font-size: 0.85rem;        /* 改大：原 0.65rem */
+      letter-spacing: 0.18em;
       color: #6A8040;
       text-transform: uppercase;
       margin-bottom: 0.65rem;
     }
 
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.7rem;         /* 改大：原 1.4rem */
       line-height: 1.3;
       color: var(--dark);
       margin-bottom: 1.5rem;
@@ -441,12 +433,10 @@
       transform: rotate(-10deg);
     }
 
-    .article-card-body {
-      padding: 1.2rem;
-    }
+    .article-card-body { padding: 1.2rem; }
 
     .card-tag {
-      font-size: 0.62rem;
+      font-size: 0.72rem;        /* 改大：原 0.62rem */
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
@@ -456,7 +446,7 @@
     .card-tag-green { color: #4A5E38; }
 
     .card-title {
-      font-size: 0.88rem;
+      font-size: 0.95rem;        /* 改大：原 0.88rem */
       color: var(--dark);
       font-weight: 500;
       line-height: 1.6;
@@ -464,7 +454,7 @@
     }
 
     .card-meta {
-      font-size: 0.72rem;
+      font-size: 0.8rem;         /* 改大：原 0.72rem */
       color: var(--muted);
     }
 
@@ -480,7 +470,7 @@
     .view-all {
       display: inline-block;
       margin-top: 1.5rem;
-      font-size: 0.78rem;
+      font-size: 0.88rem;
       color: var(--pink);
       letter-spacing: 0.06em;
       border-bottom: 1px solid var(--pink);
@@ -498,28 +488,35 @@
       padding: 2rem 1.8rem;
       border-right: 1px solid var(--border);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .book-item:last-child { border-right: none; }
 
     .book-cover {
-      width: 160px;
-      height: 240px;
+      width: 150px;
+      height: 220px;
       object-fit: cover;
       border-radius: 6px;
-      margin-bottom: 0.8rem;
+      margin: 0 auto 0.8rem auto;  /* 居中修正 */
+      display: block;
       background: #E8C4B8;
+      transition: opacity 0.2s;
     }
 
+    .book-cover:hover { opacity: 0.85; }
+
     .book-title {
-      font-size: 0.82rem;
+      font-size: 0.88rem;        /* 改大：原 0.82rem */
       color: var(--dark);
       font-weight: 500;
       line-height: 1.5;
     }
 
     .book-meta {
-      font-size: 0.72rem;
+      font-size: 0.78rem;        /* 改大：原 0.72rem */
       color: var(--muted);
       margin-top: 0.25rem;
     }
@@ -542,9 +539,9 @@
     }
 
     .footer-sub {
-      font-size: 0.65rem;
+      font-size: 0.78rem;        /* 改大：原 0.65rem */
       color: var(--pink);
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
     }
 
     .footer-right {
@@ -555,7 +552,7 @@
     }
 
     .footer-link {
-      font-size: 0.76rem;
+      font-size: 0.82rem;
       color: var(--muted);
       transition: color 0.2s;
     }
@@ -563,7 +560,7 @@
     .footer-link:hover { color: var(--pink); }
 
     .footer-copy {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       color: #C0A8A4;
     }
 
@@ -582,14 +579,11 @@
         order: -1;
       }
 
-      .hero-text {
-        padding: 2.5rem 1.5rem;
-      }
-
-      .hero-title { font-size: 2.6rem; }
+      .hero-text { padding: 2.5rem 1.5rem; }
+      .hero-title { font-size: 2.2rem; }
 
       .band { padding: 3rem 1.5rem; }
-      .band-quote { font-size: 1.25rem; }
+      .band-quote { font-size: 1.3rem; }
 
       .sage-band { grid-template-columns: 1fr; }
       .sage-deco { display: none; }
@@ -598,9 +592,7 @@
       .section { padding: 2rem 1.5rem; }
       .divider { margin: 0 1.5rem; }
 
-      .articles-grid {
-        grid-template-columns: 1fr;
-      }
+      .articles-grid { grid-template-columns: 1fr; }
 
       .books-strip { grid-template-columns: 1fr; }
       .book-item {
@@ -725,22 +717,28 @@
   <!-- BOOKS -->
   <section class="books-strip">
     <div class="book-item">
-  <img class="book-cover" src="images/book1.jpg" alt="一念間">
-  <p class="book-title">《一念間》</p>
-  <p class="book-meta">2025 &nbsp;·&nbsp; 萬里機構</p>
-</div>
+      <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621476296" target="_blank">
+        <img class="book-cover" src="images/book1.jpg" alt="一念間">
+      </a>
+      <p class="book-title">《一念間》</p>
+      <p class="book-meta">2025 &nbsp;·&nbsp; 萬里機構</p>
+    </div>
 
-<div class="book-item">
-  <img class="book-cover" src="images/book2.jpg" alt="與孩同行">
-  <p class="book-title">《與孩同行》</p>
-  <p class="book-meta">2023 &nbsp;·&nbsp; 新雅</p>
-</div>
+    <div class="book-item">
+      <a href="https://www.sunya.com.hk/tc/book_details.php?refid=2720&category_id=5" target="_blank">
+        <img class="book-cover" src="images/book2.jpg" alt="與孩同行">
+      </a>
+      <p class="book-title">《與孩同行》</p>
+      <p class="book-meta">2023 &nbsp;·&nbsp; 新雅</p>
+    </div>
 
-<div class="book-item">
-  <img class="book-cover" src="images/book3.jpg" alt="心理學家的工具箱">
-  <p class="book-title">《心理學家的工具箱》</p>
-  <p class="book-meta">2021 &nbsp;·&nbsp; 萬里機構</p>
-</div>
+    <div class="book-item">
+      <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621475718" target="_blank">
+        <img class="book-cover" src="images/book3.jpg" alt="心理學家的工具箱">
+      </a>
+      <p class="book-title">《心理學家的工具箱》</p>
+      <p class="book-meta">2021 &nbsp;·&nbsp; 萬里機構</p>
+    </div>
   </section>
 
   <!-- FOOTER -->
