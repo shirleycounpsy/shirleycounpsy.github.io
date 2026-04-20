@@ -13,17 +13,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --pink:       #D48878;
-      --pink-light: #F5E4DF;
-      --pink-mid:   #EDB8A8;
-      --sage:       #C8CEBC;
-      --sage-dark:  #8EA070;
-      --sage-text:  #2A3420;
-      --cream:      #FAF6F0;
-      --dark:       #3D3330;
-      --mid:        #6B5A4E;
-      --muted:      #9A8070;
-      --border:     #ECD8D4;
+      --pink:        #D48878;
+      --pink-light:  #F5E4DF;
+      --pink-mid:    #EDB8A8;
+      --sage:        #C8CEBC;
+      --sage-text:   #2A3420;
+      --cream:       #FAF6F0;
+      --dark:        #3D3330;
+      --mid:         #6B5A4E;
+      --muted:       #9A8070;
+      --border:      #ECD8D4;
+      --shadow-warm: 0 4px 28px rgba(61, 51, 48, 0.09);
+      --shadow-hover: 0 10px 40px rgba(61, 51, 48, 0.14);
     }
 
     html { scroll-behavior: smooth; }
@@ -53,13 +54,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 3rem;
-      background: var(--cream);
-      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 4rem;
+      background: rgba(250, 246, 240, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(236, 216, 212, 0.7);
     }
 
     .nav-logo {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       color: var(--dark);
@@ -70,28 +73,40 @@
 
     .nav-logo small {
       display: block;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--muted);
-      letter-spacing: 0.12em;
-      margin-top: 2px;
+      letter-spacing: 0.16em;
+      margin-top: 3px;
+      text-transform: uppercase;
     }
 
-    .nav-links { display: flex; gap: 2rem; }
+    .nav-links { display: flex; gap: 2.2rem; }
 
     .nav-links a {
       font-size: 0.85rem;
       color: var(--mid);
-      letter-spacing: 0.06em;
-      transition: color 0.2s;
+      letter-spacing: 0.07em;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--pink);
+      transition: width 0.3s ease;
     }
 
     .nav-links a:hover { color: var(--pink); }
+    .nav-links a:hover::after { width: 100%; }
 
     /* ============ HERO ============ */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 520px;
+      min-height: 620px;
       position: relative;
       overflow: hidden;
     }
@@ -100,36 +115,36 @@
       content: '';
       position: absolute;
       top: -80px; right: -50px;
-      width: 280px; height: 260px;
+      width: 300px; height: 280px;
       background: var(--pink-mid);
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      opacity: 0.45;
+      opacity: 0.38;
       z-index: 0;
     }
 
     .hero::after {
       content: '';
       position: absolute;
-      top: 30px; right: 140px;
-      width: 150px; height: 140px;
+      top: 30px; right: 160px;
+      width: 160px; height: 150px;
       background: #BCC8A8;
       border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      opacity: 0.38;
+      opacity: 0.32;
       z-index: 0;
     }
 
     .hero-blob3 {
       position: absolute;
       bottom: -30px; left: 46%;
-      width: 120px; height: 110px;
+      width: 130px; height: 120px;
       background: var(--pink-mid);
       border-radius: 30% 70% 50% 50% / 50% 40% 60% 50%;
-      opacity: 0.22;
+      opacity: 0.18;
       z-index: 0;
     }
 
     .hero-text {
-      padding: 4rem 3rem;
+      padding: 4rem 4rem 4rem 4.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -138,42 +153,62 @@
     }
 
     .hero-tag {
-      font-size: 0.85rem;        /* 改大：原 0.65rem */
-      letter-spacing: 0.18em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
       color: #6A8040;
       text-transform: uppercase;
       margin-bottom: 1.4rem;
     }
 
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: #6A8040;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
     .hero-title {
-      font-size: 2.6rem;
-      line-height: 1.1;
+      font-size: 4.2rem;
+      line-height: 1.08;
       color: var(--dark);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       letter-spacing: 0.01em;
     }
 
     .hero-quote {
-      font-size: 1rem;           /* 改大：原 0.88rem */
+      font-size: 1rem;
       color: var(--muted);
-      line-height: 1.9;
-      max-width: 280px;
-      margin-bottom: 2rem;
+      line-height: 2;
+      margin-bottom: 2.2rem;
+      padding-left: 0.1rem;
     }
 
     .hero-cta {
-      display: inline-block;
-      padding: 0.7rem 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 2rem;
       background: var(--pink);
       color: var(--cream);
       font-size: 0.88rem;
       border-radius: 999px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       width: fit-content;
-      transition: opacity 0.2s;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 4px 16px rgba(212, 136, 120, 0.35);
     }
 
-    .hero-cta:hover { opacity: 0.85; }
+    .hero-cta:hover {
+      background: #C47868;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 136, 120, 0.4);
+    }
 
     .hero-byline {
       margin-top: 2.2rem;
@@ -182,13 +217,14 @@
     }
 
     .hero-byline-cn {
-      font-size: 0.95rem;        /* 改大：原 0.82rem */
+      font-size: 1rem;
       color: var(--mid);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
+      font-weight: 500;
     }
 
     .hero-byline-en {
-      font-size: 0.78rem;        /* 改大：原 0.65rem */
+      font-size: 0.76rem;
       color: var(--pink);
       letter-spacing: 0.1em;
       margin-top: 4px;
@@ -210,30 +246,19 @@
       object-position: 35% center;
     }
 
-    .hero-leaf1 {
+    .hero-image::after {
+      content: '';
       position: absolute;
-      bottom: 50px; left: 30px;
-      width: 90px; height: 130px;
-      background: #96A870;
-      border-radius: 50% 8% 50% 8%;
-      opacity: 0.28;
-      transform: rotate(-10deg);
-    }
-
-    .hero-leaf2 {
-      position: absolute;
-      top: 40px; right: 80px;
-      width: 65px; height: 95px;
-      background: #BCC8A8;
-      border-radius: 50% 8% 50% 8%;
-      opacity: 0.38;
-      transform: rotate(12deg);
+      inset: 0;
+      background: linear-gradient(to right, rgba(250,246,240,0.18) 0%, transparent 30%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     /* ============ PHILOSOPHY BAND ============ */
     .band {
       background: var(--pink-light);
-      padding: 4rem 3rem;
+      padding: 5.5rem 4rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -242,41 +267,79 @@
     .band-blob {
       position: absolute;
       top: -50px; left: -40px;
-      width: 180px; height: 170px;
+      width: 200px; height: 190px;
       background: var(--pink-mid);
       border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
-      opacity: 0.28;
+      opacity: 0.22;
+    }
+
+    .band-blob-2 {
+      position: absolute;
+      bottom: -60px; right: -30px;
+      width: 160px; height: 150px;
+      background: var(--pink-mid);
+      border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+      opacity: 0.18;
     }
 
     .band-label {
-      font-size: 0.85rem;        /* 改大：原 0.65rem */
-      letter-spacing: 0.2em;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
       color: #B8786A;
       text-transform: uppercase;
-      margin-bottom: 1.2rem;
+      margin-bottom: 2rem;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .band-label::before,
+    .band-label::after {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: #C8948A;
+      opacity: 0.6;
+    }
+
+    .band-quote-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 720px;
+    }
+
+    .band-quote-mark {
+      position: absolute;
+      top: -1.8rem;
+      left: -2rem;
+      font-size: 7rem;
+      line-height: 1;
+      color: var(--pink-mid);
+      opacity: 0.4;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      user-select: none;
+      pointer-events: none;
     }
 
     .band-quote {
-      font-size: 1.85rem;        /* 改大：原 1.65rem */
-      line-height: 1.7;
+      font-size: 2rem;
+      line-height: 1.85;
       color: var(--dark);
-      max-width: 660px;
       margin: 0 auto;
       position: relative;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.025em;
     }
 
-    .band-quote em {
-      color: var(--pink);
-      font-style: normal;
-    }
+    .band-quote em { color: var(--pink); font-style: normal; }
 
     .band-attr {
-      font-size: 0.85rem;        /* 改大：原 0.75rem */
+      font-size: 0.83rem;
       color: #B09090;
-      margin-top: 1.4rem;
-      letter-spacing: 0.08em;
+      margin-top: 2rem;
+      letter-spacing: 0.1em;
       position: relative;
     }
 
@@ -285,45 +348,64 @@
       background: var(--sage);
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
-      min-height: 260px;
+      min-height: 340px;
     }
 
-    .sage-text { padding: 3rem; }
+    .sage-text { padding: 4rem 4.5rem; }
 
     .sage-label {
-      font-size: 0.85rem;        /* 改大：原 0.65rem */
-      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       color: #4A5E38;
       text-transform: uppercase;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sage-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: #4A5E38;
+      opacity: 0.6;
+      flex-shrink: 0;
     }
 
     .sage-title {
-      font-size: 1.7rem;         /* 改大：原 1.4rem */
-      line-height: 1.35;
+      font-size: 2rem;
+      line-height: 1.3;
       color: var(--sage-text);
       margin-bottom: 1rem;
     }
 
     .sage-body {
-      font-size: 0.95rem;        /* 改大：原 0.82rem */
+      font-size: 0.98rem;
       color: #404E30;
-      line-height: 1.9;
-      max-width: 360px;
+      line-height: 2;
     }
 
     .bubbles {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.2rem;
+      gap: 0.55rem;
+      margin-top: 1.6rem;
     }
 
     .bubble {
-      padding: 0.35rem 1rem;
+      padding: 0.42rem 1.2rem;
       border-radius: 999px;
-      font-size: 0.88rem;        /* 改大：原 0.76rem */
+      font-size: 0.85rem;
       white-space: nowrap;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .bubble:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
     .bubble-green {
@@ -344,181 +426,271 @@
       background: #B8C2AC;
     }
 
+    .sage-deco::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.06) 18px,
+        rgba(255,255,255,0.06) 19px
+      );
+    }
+
     .sage-deco-leaf1 {
       position: absolute;
       top: -15px; right: -25px;
-      width: 160px; height: 220px;
+      width: 170px; height: 240px;
       background: #8EA070;
       border-radius: 50% 8% 50% 8%;
-      opacity: 0.32;
+      opacity: 0.3;
       transform: rotate(15deg);
     }
 
     .sage-deco-leaf2 {
       position: absolute;
       bottom: 15px; left: 15px;
-      width: 100px; height: 150px;
+      width: 110px; height: 165px;
       background: #6A8050;
       border-radius: 50% 8% 50% 8%;
-      opacity: 0.18;
+      opacity: 0.16;
       transform: rotate(-20deg);
     }
 
     /* ============ ARTICLES ============ */
-    .section { padding: 3rem; }
+    .section {
+      padding: 4rem 4.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
     .section-label {
-      font-size: 0.85rem;        /* 改大：原 0.65rem */
-      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       color: #6A8040;
       text-transform: uppercase;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: #6A8040;
+      opacity: 0.6;
+      flex-shrink: 0;
     }
 
     .section-title {
-      font-size: 1.7rem;         /* 改大：原 1.4rem */
+      font-size: 1.85rem;
       line-height: 1.3;
       color: var(--dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .divider {
       height: 1px;
-      background: var(--border);
-      margin: 0 3rem;
+      background: linear-gradient(to right, transparent, var(--border) 15%, var(--border) 85%, transparent);
+      margin: 0;
     }
 
     .articles-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 1.1rem;
-      align-items: start;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 1.4rem;
+      align-items: stretch;
     }
 
     .article-card-main {
       background: #fff;
       border: 0.5px solid var(--border);
-      border-radius: 10px;
+      border-radius: 14px;
       overflow: hidden;
+      box-shadow: var(--shadow-warm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .article-card-main:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
     }
 
     .article-card-image {
-      height: 140px;
-      background: #F0D8D0;
+      height: 160px;
+      background: linear-gradient(135deg, #F5E0D8 0%, #EDD0C4 40%, #E8C8B8 100%);
       position: relative;
       overflow: hidden;
-    }
-
-    .article-card-image img {
-      width: 100%; height: 100%;
-      object-fit: cover;
     }
 
     .card-blob {
       position: absolute;
       bottom: -25px; right: -18px;
-      width: 110px; height: 110px;
+      width: 130px; height: 130px;
       background: var(--pink-mid);
       border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
-      opacity: 0.45;
+      opacity: 0.5;
     }
 
     .card-leaf {
       position: absolute;
-      bottom: -8px; left: 16px;
-      width: 60px; height: 90px;
+      bottom: -8px; left: 24px;
+      width: 70px; height: 105px;
       background: #96A870;
       border-radius: 50% 8% 50% 8%;
-      opacity: 0.28;
+      opacity: 0.3;
       transform: rotate(-10deg);
     }
 
-    .article-card-body { padding: 1.2rem; }
+    .card-leaf-2 {
+      position: absolute;
+      top: 10px; right: 50px;
+      width: 45px; height: 70px;
+      background: #8EA870;
+      border-radius: 50% 8% 50% 8%;
+      opacity: 0.2;
+      transform: rotate(25deg);
+    }
+
+    .article-card-body { padding: 1.5rem 1.6rem; }
 
     .card-tag {
-      font-size: 0.72rem;        /* 改大：原 0.62rem */
-      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-tag::before {
+      content: '';
+      display: block;
+      width: 1rem;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.6;
+      flex-shrink: 0;
     }
 
     .card-tag-pink { color: #C47868; }
     .card-tag-green { color: #4A5E38; }
 
     .card-title {
-      font-size: 0.95rem;        /* 改大：原 0.88rem */
+      font-size: 1.05rem;
       color: var(--dark);
       font-weight: 500;
-      line-height: 1.6;
-      margin-bottom: 0.6rem;
+      line-height: 1.65;
+      margin-bottom: 0.7rem;
     }
 
     .card-meta {
-      font-size: 0.8rem;         /* 改大：原 0.72rem */
+      font-size: 0.8rem;
       color: var(--muted);
+      letter-spacing: 0.04em;
     }
 
     .article-card-sm {
       background: #fff;
       border: 0.5px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem;
+      border-radius: 14px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: var(--shadow-warm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .article-card-sm.dim { opacity: 0.35; }
+    .article-card-sm:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
 
     .view-all {
-      display: inline-block;
-      margin-top: 1.5rem;
-      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.8rem;
+      font-size: 0.85rem;
       color: var(--pink);
-      letter-spacing: 0.06em;
-      border-bottom: 1px solid var(--pink);
-      padding-bottom: 1px;
+      letter-spacing: 0.08em;
+      transition: gap 0.2s, opacity 0.2s;
     }
 
+    .view-all::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .view-all:hover { opacity: 0.8; }
+    .view-all:hover::after { transform: translateX(3px); }
+
     /* ============ BOOKS ============ */
-    .books-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .books-section {
       background: var(--pink-light);
+      padding: 4.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .books-section .section-label { color: #B8786A; }
+    .books-section .section-label::before { background: #B8786A; }
+
+    .books-grid {
+      display: flex;
+      gap: 3.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
     .book-item {
-      padding: 2rem 1.8rem;
-      border-right: 1px solid var(--border);
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .book-item:last-child { border-right: none; }
-
     .book-cover {
-      width: 150px;
-      height: 220px;
+      width: 170px;
+      height: 248px;
       object-fit: cover;
-      border-radius: 6px;
-      margin: 0 auto 0.8rem auto;  /* 居中修正 */
+      border-radius: 6px 10px 10px 6px;
+      margin-bottom: 1rem;
       display: block;
       background: #E8C4B8;
-      transition: opacity 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: -4px 4px 16px rgba(61,51,48,0.15), 0 2px 8px rgba(61,51,48,0.1);
     }
 
-    .book-cover:hover { opacity: 0.85; }
+    .book-cover:hover {
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow: -6px 10px 28px rgba(61,51,48,0.2), 0 4px 12px rgba(61,51,48,0.12);
+    }
 
     .book-title {
-      font-size: 0.88rem;        /* 改大：原 0.82rem */
+      font-size: 0.9rem;
       color: var(--dark);
       font-weight: 500;
-      line-height: 1.5;
+      line-height: 1.6;
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
     }
 
+    .book-title:hover { color: var(--pink); }
+
     .book-meta {
-      font-size: 0.78rem;        /* 改大：原 0.72rem */
+      font-size: 0.76rem;
       color: var(--muted);
-      margin-top: 0.25rem;
+      margin-top: 0.3rem;
+      letter-spacing: 0.05em;
     }
 
     /* ============ FOOTER ============ */
@@ -526,87 +698,79 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 2rem 3rem;
+      padding: 2.5rem 4.5rem;
       border-top: 1px solid var(--border);
       background: var(--cream);
     }
 
     .footer-brand {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--dark);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       margin-bottom: 0.3rem;
     }
 
     .footer-sub {
-      font-size: 0.78rem;        /* 改大：原 0.65rem */
+      font-size: 0.72rem;
       color: var(--pink);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
     .footer-right {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 0.3rem;
+      gap: 0.4rem;
     }
 
     .footer-link {
       font-size: 0.82rem;
       color: var(--muted);
       transition: color 0.2s;
+      letter-spacing: 0.04em;
     }
 
     .footer-link:hover { color: var(--pink); }
 
     .footer-copy {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: #C0A8A4;
+      letter-spacing: 0.06em;
     }
 
     /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .nav { padding: 0.9rem 2rem; }
+      .hero-text { padding: 3rem 2.5rem; }
+      .section { padding: 3rem 2.5rem; }
+    }
+
     @media (max-width: 768px) {
       .nav { padding: 0.9rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.8rem; }
 
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 280px; order: -1; }
+      .hero-text { padding: 2.5rem 1.8rem; }
+      .hero-title { font-size: 3rem; }
 
-      .hero-image {
-        height: 260px;
-        order: -1;
-      }
-
-      .hero-text { padding: 2.5rem 1.5rem; }
-      .hero-title { font-size: 2.2rem; }
-
-      .band { padding: 3rem 1.5rem; }
-      .band-quote { font-size: 1.3rem; }
+      .band { padding: 3.5rem 1.8rem; }
+      .band-quote { font-size: 1.4rem; }
+      .band-quote-mark { display: none; }
 
       .sage-band { grid-template-columns: 1fr; }
       .sage-deco { display: none; }
-      .sage-text { padding: 2rem 1.5rem; }
+      .sage-text { padding: 2.5rem 1.8rem; }
 
-      .section { padding: 2rem 1.5rem; }
-      .divider { margin: 0 1.5rem; }
-
+      .section { padding: 2.5rem 1.8rem; }
       .articles-grid { grid-template-columns: 1fr; }
 
-      .books-strip { grid-template-columns: 1fr; }
-      .book-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
-      .book-item:last-child { border-bottom: none; }
+      .books-section { padding: 2.5rem 1.8rem; }
+      .books-grid { gap: 2rem; }
 
-      .footer {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-        padding: 1.5rem;
-      }
-
+      .footer { grid-template-columns: 1fr; gap: 1.4rem; padding: 2rem 1.8rem; }
       .footer-right { align-items: flex-start; }
     }
   </style>
@@ -615,10 +779,10 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <div class="nav-logo mincho">
+    <a href="/" class="nav-logo mincho">
       明心<em>櫞</em>
       <small>輔導心理 by Shirley</small>
-    </div>
+    </a>
     <div class="nav-links">
       <a href="#">首頁</a>
       <a href="about.html">關於我</a>
@@ -641,21 +805,23 @@
       </div>
     </div>
     <div class="hero-image">
-      <img src="images/hero.jpg" alt="">
-      <div class="hero-leaf1"></div>
-      <div class="hero-leaf2"></div>
+      <img src="images/hero.jpg" alt="黃家盈 Shirley — 香港心理學會註冊輔導心理學家">
     </div>
   </section>
 
   <!-- PHILOSOPHY -->
   <section class="band">
     <div class="band-blob"></div>
+    <div class="band-blob-2"></div>
     <p class="band-label">我的理念</p>
-    <blockquote class="band-quote mincho">
-      我相信，每個人都需要一個完全屬於自己的空間——<br>
-      一個可以安心接觸平日<em>不敢靠近</em>的情緒、<br>
-      慢慢認識自己的地方。
-    </blockquote>
+    <div class="band-quote-wrap">
+      <span class="band-quote-mark">"</span>
+      <blockquote class="band-quote mincho">
+        我相信，每個人都需要一個完全屬於自己的空間——<br>
+        一個可以安心接觸平日<em>不敢靠近</em>的情緒、<br>
+        慢慢認識自己的地方。
+      </blockquote>
+    </div>
     <p class="band-attr">— 黃家盈 Shirley</p>
   </section>
 
@@ -689,6 +855,7 @@
         <div class="article-card-image">
           <div class="card-blob"></div>
           <div class="card-leaf"></div>
+          <div class="card-leaf-2"></div>
         </div>
         <div class="article-card-body">
           <p class="card-tag card-tag-pink">親子相處</p>
@@ -703,11 +870,6 @@
         <p class="card-meta">2025年 &nbsp;·&nbsp; 3 分鐘閱讀</p>
       </div>
 
-      <div class="article-card-sm dim">
-        <p class="card-tag card-tag-pink">輔導知識</p>
-        <h3 class="card-title">更多文章即將發佈</h3>
-      </div>
-
     </div>
     <a class="view-all" href="https://shirleycounpsy.github.io/notes/" target="_blank">瀏覽所有文章 →</a>
   </section>
@@ -715,29 +877,31 @@
   <div class="divider"></div>
 
   <!-- BOOKS -->
-  <section class="books-strip">
-    <div class="book-item">
-      <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621476296" target="_blank">
-        <img class="book-cover" src="images/book1.jpg" alt="一念間">
-      </a>
-      <p class="book-title">《一念間》</p>
-      <p class="book-meta">2025 &nbsp;·&nbsp; 萬里機構</p>
-    </div>
-
-    <div class="book-item">
-      <a href="https://www.sunya.com.hk/tc/book_details.php?refid=2720&category_id=5" target="_blank">
-        <img class="book-cover" src="images/book2.jpg" alt="與孩同行">
-      </a>
-      <p class="book-title">《與孩同行》</p>
-      <p class="book-meta">2023 &nbsp;·&nbsp; 新雅</p>
-    </div>
-
-    <div class="book-item">
-      <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621475718" target="_blank">
-        <img class="book-cover" src="images/book3.jpg" alt="心理學家的工具箱">
-      </a>
-      <p class="book-title">《心理學家的工具箱》</p>
-      <p class="book-meta">2021 &nbsp;·&nbsp; 萬里機構</p>
+  <section class="books-section">
+    <p class="section-label">著作</p>
+    <h2 class="section-title mincho">我的書籍</h2>
+    <div class="books-grid">
+      <div class="book-item">
+        <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621476296" target="_blank">
+          <img class="book-cover" src="images/book1.jpg" alt="一念間">
+        </a>
+        <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621476296" target="_blank" class="book-title">《一念間》</a>
+        <p class="book-meta">2025 &nbsp;·&nbsp; 萬里機構</p>
+      </div>
+      <div class="book-item">
+        <a href="https://www.sunya.com.hk/tc/book_details.php?refid=2720&category_id=5" target="_blank">
+          <img class="book-cover" src="images/book2.jpg" alt="與孩同行">
+        </a>
+        <a href="https://www.sunya.com.hk/tc/book_details.php?refid=2720&category_id=5" target="_blank" class="book-title">《與孩同行》</a>
+        <p class="book-meta">2023 &nbsp;·&nbsp; 新雅</p>
+      </div>
+      <div class="book-item">
+        <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621475718" target="_blank">
+          <img class="book-cover" src="images/book3.jpg" alt="心理學家的工具箱">
+        </a>
+        <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621475718" target="_blank" class="book-title">《心理學家的工具箱》</a>
+        <p class="book-meta">2021 &nbsp;·&nbsp; 萬里機構</p>
+      </div>
     </div>
   </section>
 
@@ -751,7 +915,7 @@
       <a class="footer-link" href="https://www.instagram.com/shirley.counsellingpsy" target="_blank">
         Instagram &nbsp;·&nbsp; @shirley.counsellingpsy
       </a>
-      <p class="footer-copy">© 2025 黃家盈</p>
+      <p class="footer-copy">© 2026 黃家盈</p>
     </div>
   </footer>
 
