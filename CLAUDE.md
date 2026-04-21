@@ -42,7 +42,7 @@ shirleycounpsy.github.io/   ← 你而家喺呢度
 
 **字款（三層字體架構）：**
 - **品牌名、Hero 大標題、引用句**：Kaisei Decol（Google Fonts）— 有筆墨感，情感性強，用 `.mincho` class
-- **章節標題 h2**（「我的工作領域」等）：Zen Kurenaido（Google Fonts）— 纖細飄逸，書法韻味，用 `.heading` class
+- **章節標題 h2**（「我的工作領域」等）：Noto Serif TC Light 300（Google Fonts）— 纖細、繁體中文全字符覆蓋，用 `.heading` class（`font-weight: 300`）
 - **內文、標籤、metadata**：Klee One（Google Fonts）— 溫潤楷書感，用 `body` 預設
 
 Cormorant Garamond 保留作裝飾引號（`"` 符號）用。

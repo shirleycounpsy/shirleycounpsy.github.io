@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於我 — 明心櫞</title>
+  <meta name="description" content="黃家盈 Shirley，香港心理學會（HKPS）註冊輔導心理學家，超過十年臨床經驗，專注兒童及青少年心理、情緒輔導與輔導督導培訓。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Kaisei+Decol:wght@400;700&family=Klee+One:wght@400;600&family=Noto+Serif+TC:wght@300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:        #C49898;
+      --pink-light:  #fce1de;
+      --pink-mid:    #F2E5E0;
+      --sage:        #CEC0B8;
+      --sage-text:   #2D2220;
+      --cream:       #FDFAF8;
+      --dark:        #2D2220;
+      --mid:         #7A6858;
+      --muted:       #9A8A78;
+      --border:      #E4D4C8;
+      --shadow-warm: 0 4px 28px rgba(45, 34, 32, 0.08);
+      --shadow-hover: 0 10px 40px rgba(45, 34, 32, 0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Klee One', 'PingFang TC', 'Hiragino Sans GB',
+                   system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .mincho {
+      font-family: 'Kaisei Decol', 'Hiragino Mincho ProN',
+                   'Yu Mincho', Georgia, serif;
+    }
+
+    .heading {
+      font-family: 'Noto Serif TC', 'Hiragino Mincho ProN',
+                   'Yu Mincho', Georgia, serif;
+      font-weight: 300;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 4rem;
+      background: rgba(250, 246, 240, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(236, 216, 212, 0.7);
+    }
+
+    .nav-logo {
+      font-size: 1.45rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    .nav-logo em { color: var(--pink); font-style: normal; }
+
+    .nav-logo small {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: 2.2rem; }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--mid);
+      letter-spacing: 0.07em;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--pink);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--pink); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--pink); }
+    .nav-links a.active::after { width: 100%; }
+
+    /* ============ PAGE HEADER ============ */
+    .page-header {
+      padding: 4rem 4.5rem 3.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .profile-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-blob {
+      position: absolute;
+      inset: -18px;
+      background: var(--pink-mid);
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      opacity: 0.45;
+      z-index: 0;
+    }
+
+    .profile-img {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50% 50% 46% 54% / 46% 46% 54% 54%;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-warm);
+    }
+
+    .profile-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .page-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-tag::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--muted);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .page-name {
+      font-size: 3rem;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-name-en {
+      font-size: 1.1rem;
+      color: var(--pink);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.6rem;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.95;
+    }
+
+    .page-intro + .page-intro {
+      margin-top: 0.9rem;
+    }
+
+    .notice-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.8rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--pink-mid);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .notice-pill::before {
+      content: '·';
+      color: var(--pink);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* ============ DIVIDER ============ */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border) 15%, var(--border) 85%, transparent);
+    }
+
+    /* ============ PHILOSOPHY ============ */
+    .band {
+      background: var(--pink-light);
+      padding: 5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .band-blob {
+      position: absolute;
+      top: -50px; left: -40px;
+      width: 200px; height: 190px;
+      background: var(--pink-mid);
+      border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+      opacity: 0.22;
+    }
+
+    .band-blob-2 {
+      position: absolute;
+      bottom: -60px; right: -30px;
+      width: 160px; height: 150px;
+      background: var(--pink-mid);
+      border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+      opacity: 0.18;
+    }
+
+    .band-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      color: #B8A898;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .band-label::before,
+    .band-label::after {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: #C8B8A8;
+      opacity: 0.6;
+    }
+
+    .band-quote-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 700px;
+    }
+
+    .band-quote-mark {
+      position: absolute;
+      top: -1.8rem;
+      left: -2rem;
+      font-size: 7rem;
+      line-height: 1;
+      color: var(--pink-mid);
+      opacity: 0.4;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .band-quote {
+      font-size: 1.65rem;
+      line-height: 2;
+      color: var(--dark);
+      margin: 0 auto;
+      position: relative;
+      letter-spacing: 0.025em;
+    }
+
+    .band-quote em { color: var(--pink); font-style: normal; }
+
+    .band-body {
+      max-width: 640px;
+      margin: 1.8rem auto 0;
+      font-size: 0.96rem;
+      color: var(--mid);
+      line-height: 2;
+      position: relative;
+    }
+
+    .band-body p + p { margin-top: 0.8rem; }
+
+    /* ============ CREDENTIALS ============ */
+    .cred-section {
+      background: var(--sage);
+      padding: 4.5rem 4.5rem;
+    }
+
+    .cred-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+
+    .cred-block-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      color: #8A7A68;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .cred-block-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: #8A7A68;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .cred-block-title {
+      font-size: 1.6rem;
+      color: var(--sage-text);
+      margin-bottom: 1.4rem;
+    }
+
+    .cred-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .cred-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: #5A4838;
+      line-height: 1.65;
+    }
+
+    .cred-list-training li {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      letter-spacing: 0.02em;
+    }
+
+    .cred-list li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--pink);
+      flex-shrink: 0;
+      margin-top: 0.55em;
+    }
+
+    /* ============ SCOPE ============ */
+    .scope-section {
+      padding: 4rem 4.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      color: #9A8A78;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: #9A8A78;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-bottom: 1.8rem;
+    }
+
+    .bubbles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .bubble {
+      padding: 0.5rem 1.3rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .bubble:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .bubble-green {
+      background: #DDD4C8;
+      color: #5A4838;
+      border: 1px solid #C4B4A4;
+    }
+
+    .bubble-pink {
+      background: #E8D0CC;
+      color: #6A3C38;
+      border: 1px solid #C8A8A4;
+    }
+
+    /* ============ MEDIA ============ */
+    .media-section {
+      background: var(--pink-light);
+      padding: 4rem 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .media-section .band-blob {
+      opacity: 0.15;
+    }
+
+    .media-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .media-card {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: var(--shadow-warm);
+      margin-top: 1.6rem;
+      max-width: 680px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .media-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .media-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .media-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .media-card-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.3rem;
+    }
+
+    .media-card-title {
+      font-size: 1rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 0.25rem;
+    }
+
+    .media-card-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .media-arrow {
+      margin-left: auto;
+      font-size: 1rem;
+      color: var(--pink);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .media-card:hover .media-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 2.5rem 4.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--cream);
+    }
+
+    .footer-brand {
+      font-size: 1.3rem;
+      color: var(--dark);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-sub {
+      font-size: 0.72rem;
+      color: var(--pink);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+    }
+
+    .footer-link {
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-link:hover { color: var(--pink); }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: #C0A8A4;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .nav { padding: 0.9rem 2rem; }
+      .page-header { padding: 3rem 2.5rem; gap: 2.5rem; }
+      .cred-section { padding: 3rem 2.5rem; }
+      .scope-section { padding: 3rem 2.5rem; }
+      .media-section { padding: 3rem 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 0.9rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.8rem; }
+
+      .page-header {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.8rem;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .profile-wrap { justify-content: center; }
+      .profile-img { width: 200px; height: 245px; }
+      .page-tag { justify-content: center; }
+      .page-tag::before { display: none; }
+      .notice-pill { margin-left: auto; margin-right: auto; }
+
+      .band { padding: 3.5rem 1.8rem; }
+      .band-quote { font-size: 1.25rem; }
+      .band-quote-mark { display: none; }
+
+      .cred-section { padding: 3rem 1.8rem; }
+      .cred-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      .scope-section { padding: 2.5rem 1.8rem; }
+      .media-section { padding: 2.5rem 1.8rem; }
+      .media-card { flex-wrap: wrap; }
+      .media-arrow { display: none; }
+
+      .footer { grid-template-columns: 1fr; gap: 1.4rem; padding: 2rem 1.8rem; }
+      .footer-right { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="nav-logo mincho">
+      明心<em>櫞</em>
+      <small>輔導心理 by Shirley</small>
+    </a>
+    <div class="nav-links">
+      <a href="/">首頁</a>
+      <a href="about.html" class="active">關於我</a>
+      <a href="https://shirleycounpsy.github.io/notes/" target="_blank">文章</a>
+    </div>
+  </nav>
+
+  <!-- INTRO -->
+  <section class="page-header">
+    <div class="profile-wrap">
+      <div class="profile-blob"></div>
+      <img class="profile-img" src="images/profile.jpg" alt="黃家盈 Shirley" />
+    </div>
+    <div class="profile-text">
+      <p class="page-tag">關於我</p>
+      <h1 class="page-name mincho">黃家盈<br>Shirley</h1>
+      <p class="page-name-en">香港心理學會（HKPS）註冊輔導心理學家</p>
+      <p class="page-intro">
+        入行從來不是因為一個宏大的理想。當年其中一個選修科讀到心理學，覺得這科目適合自己，便一路走下去。做著做著，卻漸漸發現，原來自己也喜歡在一個真誠的空間裡與人對話，見證彼此的成長。這份發現，讓我留下來。
+      </p>
+      <p class="page-intro">
+        超過十年臨床經驗，陪伴兒童、青少年及成年人走過不同的人生階段。多年來，我越來越意識到，香港的助人專業發展蓬勃，不同專業各有所長。我希望能透過自己的工作，讓更多人了解輔導心理學家的角色與價值。
+      </p>
+      <p class="page-intro">
+        輔導工作需要持守專業操守，並不斷學習與自我反思。目前重心在研究、督導培訓及寫作，暫未開放個案諮詢。
+      </p>
+      <span class="notice-pill">現時暫未開放個案諮詢</span>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="cred-section">
+    <div class="cred-inner">
+      <div>
+        <p class="cred-block-label">資歷</p>
+        <h2 class="cred-block-title heading">專業資歷</h2>
+        <ul class="cred-list">
+          <li>香港心理學會（HKPS）註冊輔導心理學家</li>
+          <li>亞洲專業輔導及心理學會註冊臨床督導</li>
+          <li>亞洲專業輔導及心理學會註冊輔導員</li>
+          <li>輔導心理學博士（修讀中）</li>
+        </ul>
+      </div>
+      <div>
+        <p class="cred-block-label">培訓</p>
+        <h2 class="cred-block-title heading">專業培訓</h2>
+        <ul class="cred-list cred-list-training">
+          <li>Emotionally Focused Individual Therapy (EFIT) Essentials</li>
+          <li>Core Skills Advanced Training in Emotionally Focused Couple Therapy</li>
+          <li>Professional Certificate in Clinical Supervision of Counselling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section class="scope-section">
+    <p class="section-label">工作範疇</p>
+    <h2 class="section-title heading">我的工作領域</h2>
+    <div class="bubbles">
+      <span class="bubble bubble-green">兒童及青少年心理</span>
+      <span class="bubble bubble-pink">情緒輔導</span>
+      <span class="bubble bubble-green">生涯規劃與自我探索</span>
+      <span class="bubble bubble-pink">親職諮詢</span>
+      <span class="bubble bubble-green">輔導督導與培訓</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MEDIA -->
+  <section class="media-section">
+    <div class="band-blob"></div>
+    <div class="media-inner">
+      <p class="section-label">媒體</p>
+      <h2 class="section-title heading">公開參與</h2>
+      <a class="media-card" href="https://www.rthk.hk/radio/pth/programme/g1619_upside_of_failure" target="_blank" rel="noopener">
+        <div>
+          <p class="media-card-label">香港電台 · 社區參與廣播服務</p>
+          <p class="media-card-title">《失敗的禮物》主持人</p>
+          <p class="media-card-meta">RTHK 普通話台</p>
+        </div>
+        <span class="media-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <p class="footer-brand mincho">明心櫞</p>
+      <p class="footer-sub">輔導心理 by Shirley</p>
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://www.instagram.com/shirley.counsellingpsy" target="_blank">
+        Instagram &nbsp;·&nbsp; @shirley.counsellingpsy
+      </a>
+      <p class="footer-copy">© 2026 黃家盈</p>
+    </div>
+  </footer>
+
+</body>
+</html>
