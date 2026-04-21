@@ -7,40 +7,44 @@
   <meta name="description" content="黃家盈 Shirley，香港心理學會註冊輔導心理學家。在這裡，我分享輔導知識與人生洞見，陪伴你認識自己。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Kaisei+Decol:wght@400;700&family=Klee+One:wght@400;600&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --pink:        #D48878;
-      --pink-light:  #F5E4DF;
-      --pink-mid:    #EDB8A8;
-      --sage:        #C8CEBC;
-      --sage-text:   #2A3420;
-      --cream:       #FAF6F0;
-      --dark:        #3D3330;
-      --mid:         #6B5A4E;
-      --muted:       #9A8070;
-      --border:      #ECD8D4;
-      --shadow-warm: 0 4px 28px rgba(61, 51, 48, 0.09);
-      --shadow-hover: 0 10px 40px rgba(61, 51, 48, 0.14);
+      --pink:        #C49898;
+      --pink-light:  #fce1de;
+      --pink-mid:    #E8C0BA;
+      --sage:        #CEC0B8;
+      --sage-text:   #2D2220;
+      --cream:       #FDFAF8;
+      --dark:        #2D2220;
+      --mid:         #7A6858;
+      --muted:       #9A8A78;
+      --border:      #E4D4C8;
+      --shadow-warm: 0 4px 28px rgba(45, 34, 32, 0.08);
+      --shadow-hover: 0 10px 40px rgba(45, 34, 32, 0.13);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'PingFang TC', 'PingFang SC', 'Hiragino Sans GB',
-                   'Microsoft YaHei', system-ui, sans-serif;
+      font-family: 'Klee One', 'PingFang TC', 'Hiragino Sans GB',
+                   system-ui, sans-serif;
       background: var(--cream);
       color: var(--dark);
       line-height: 1.7;
     }
 
     .mincho {
-      font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
-                   'Yu Mincho', 'YuMincho', 'STSong', 'SimSun',
-                   'Cormorant Garamond', Georgia, serif;
+      font-family: 'Kaisei Decol', 'Hiragino Mincho ProN',
+                   'Yu Mincho', Georgia, serif;
+    }
+
+    .heading {
+      font-family: 'Zen Kurenaido', 'PingFang TC', 'Hiragino Sans GB',
+                   system-ui, sans-serif;
     }
 
     img { display: block; max-width: 100%; }
@@ -127,7 +131,7 @@
       position: absolute;
       top: 30px; right: 160px;
       width: 160px; height: 150px;
-      background: #BCC8A8;
+      background: #D4C4BC;
       border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
       opacity: 0.32;
       z-index: 0;
@@ -158,7 +162,7 @@
       gap: 0.75rem;
       font-size: 0.78rem;
       letter-spacing: 0.2em;
-      color: #6A8040;
+      color: #9A8A78;
       text-transform: uppercase;
       margin-bottom: 1.4rem;
     }
@@ -168,7 +172,7 @@
       display: block;
       width: 2rem;
       height: 1px;
-      background: #6A8040;
+      background: #9A8A78;
       opacity: 0.6;
       flex-shrink: 0;
     }
@@ -201,13 +205,13 @@
       letter-spacing: 0.08em;
       width: fit-content;
       transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-      box-shadow: 0 4px 16px rgba(212, 136, 120, 0.35);
+      box-shadow: 0 4px 16px rgba(196, 152, 152, 0.35);
     }
 
     .hero-cta:hover {
-      background: #C47868;
+      background: #B48888;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(212, 136, 120, 0.4);
+      box-shadow: 0 8px 24px rgba(196, 152, 152, 0.4);
     }
 
     .hero-byline {
@@ -285,7 +289,7 @@
     .band-label {
       font-size: 0.78rem;
       letter-spacing: 0.24em;
-      color: #B8786A;
+      color: #B8A898;
       text-transform: uppercase;
       margin-bottom: 2rem;
       position: relative;
@@ -301,7 +305,7 @@
       display: block;
       width: 2.5rem;
       height: 1px;
-      background: #C8948A;
+      background: #C8B8A8;
       opacity: 0.6;
     }
 
@@ -356,7 +360,7 @@
     .sage-label {
       font-size: 0.78rem;
       letter-spacing: 0.22em;
-      color: #4A5E38;
+      color: #8A7A68;
       text-transform: uppercase;
       margin-bottom: 0.8rem;
       display: flex;
@@ -369,7 +373,7 @@
       display: block;
       width: 1.5rem;
       height: 1px;
-      background: #4A5E38;
+      background: #8A7A68;
       opacity: 0.6;
       flex-shrink: 0;
     }
@@ -383,7 +387,7 @@
 
     .sage-body {
       font-size: 0.98rem;
-      color: #404E30;
+      color: #6B5848;
       line-height: 2;
     }
 
@@ -409,9 +413,9 @@
     }
 
     .bubble-green {
-      background: #B8C4A4;
-      color: #334028;
-      border: 1px solid #96A880;
+      background: #DDD4C8;
+      color: #5A4838;
+      border: 1px solid #C4B4A4;
     }
 
     .bubble-pink {
@@ -423,7 +427,7 @@
     .sage-deco {
       position: relative;
       overflow: hidden;
-      background: #B8C2AC;
+      background: #C4B4AC;
     }
 
     .sage-deco::before {
@@ -443,7 +447,7 @@
       position: absolute;
       top: -15px; right: -25px;
       width: 170px; height: 240px;
-      background: #8EA070;
+      background: #B09888;
       border-radius: 50% 8% 50% 8%;
       opacity: 0.3;
       transform: rotate(15deg);
@@ -453,7 +457,7 @@
       position: absolute;
       bottom: 15px; left: 15px;
       width: 110px; height: 165px;
-      background: #6A8050;
+      background: #9A8878;
       border-radius: 50% 8% 50% 8%;
       opacity: 0.16;
       transform: rotate(-20deg);
@@ -469,7 +473,7 @@
     .section-label {
       font-size: 0.78rem;
       letter-spacing: 0.22em;
-      color: #6A8040;
+      color: #9A8A78;
       text-transform: uppercase;
       margin-bottom: 0.6rem;
       display: flex;
@@ -482,7 +486,7 @@
       display: block;
       width: 1.5rem;
       height: 1px;
-      background: #6A8040;
+      background: #9A8A78;
       opacity: 0.6;
       flex-shrink: 0;
     }
@@ -541,7 +545,7 @@
       position: absolute;
       bottom: -8px; left: 24px;
       width: 70px; height: 105px;
-      background: #96A870;
+      background: #C4ACA4;
       border-radius: 50% 8% 50% 8%;
       opacity: 0.3;
       transform: rotate(-10deg);
@@ -551,7 +555,7 @@
       position: absolute;
       top: 10px; right: 50px;
       width: 45px; height: 70px;
-      background: #8EA870;
+      background: #BCA8A0;
       border-radius: 50% 8% 50% 8%;
       opacity: 0.2;
       transform: rotate(25deg);
@@ -579,8 +583,8 @@
       flex-shrink: 0;
     }
 
-    .card-tag-pink { color: #C47868; }
-    .card-tag-green { color: #4A5E38; }
+    .card-tag-pink { color: #C49898; }
+    .card-tag-green { color: #8A7A68; }
 
     .card-title {
       font-size: 1.05rem;
@@ -640,8 +644,8 @@
       overflow: hidden;
     }
 
-    .books-section .section-label { color: #B8786A; }
-    .books-section .section-label::before { background: #B8786A; }
+    .books-section .section-label { color: #B8A898; }
+    .books-section .section-label::before { background: #B8A898; }
 
     .books-grid {
       display: flex;
@@ -787,7 +791,6 @@
       <a href="#">首頁</a>
       <a href="about.html">關於我</a>
       <a href="https://shirleycounpsy.github.io/notes/" target="_blank">文章</a>
-      <a href="https://shirleycounpsy.github.io/notes/publications" target="_blank">著作</a>
     </div>
   </nav>
 
@@ -797,7 +800,7 @@
     <div class="hero-text">
       <p class="hero-tag">輔導心理 · 知識空間</p>
       <h1 class="hero-title mincho">在文字裡<br>認識自己</h1>
-      <p class="hero-quote">每個人都值得擁有一個<br>屬於自己的空間</p>
+      <p class="hero-quote">願文字，成為你<br>靜靜回望自己的方式</p>
       <a class="hero-cta" href="https://shirleycounpsy.github.io/notes/" target="_blank">閱讀文章</a>
       <div class="hero-byline">
         <p class="hero-byline-cn">黃家盈</p>
@@ -829,7 +832,7 @@
   <section class="sage-band">
     <div class="sage-text">
       <p class="sage-label">專業範疇</p>
-      <h2 class="sage-title mincho">我的工作領域</h2>
+      <h2 class="sage-title heading">我的工作領域</h2>
       <p class="sage-body">超過十年臨床經驗，陪伴兒童、青少年及成年人走過不同的人生階段。</p>
       <div class="bubbles">
         <span class="bubble bubble-green">兒童及青少年心理</span>
@@ -848,7 +851,7 @@
   <!-- ARTICLES -->
   <section class="section">
     <p class="section-label">近期分享</p>
-    <h2 class="section-title mincho">最新文章</h2>
+    <h2 class="section-title heading">最新文章</h2>
     <div class="articles-grid">
 
       <div class="article-card-main">
@@ -878,8 +881,8 @@
 
   <!-- BOOKS -->
   <section class="books-section">
-    <p class="section-label">著作</p>
-    <h2 class="section-title mincho">我的書籍</h2>
+    <p class="section-label">出版</p>
+    <h2 class="section-title heading">我的著作</h2>
     <div class="books-grid">
       <div class="book-item">
         <a href="https://www.wanlibk.com/cgi-bin/isbn_pages.asp?txtIsbn=9789621476296" target="_blank">
