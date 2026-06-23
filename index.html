@@ -889,11 +889,23 @@
   <script>
     async function loadLatestArticles() {
       try {
-        const response = await fetch('/notes/static/contentIndex.json');
-        const data = await response.json();
+        const response = await fetch('/notes/index.xml');
+        const rssText = await response.text();
+        const parser = new DOMParser();
+        const rssDoc = parser.parseFromString(rssText, 'text/xml');
 
-        const allArticles = Object.entries(data).filter(([slug]) => slug.startsWith('文章/'));
-        const articles = allArticles.slice(-2).reverse();
+        const items = rssDoc.querySelectorAll('item');
+        const articles = [];
+
+        for (let item of items) {
+          const title = item.querySelector('title')?.textContent || '';
+          const link = item.querySelector('link')?.textContent || '';
+
+          if (link.includes('/文章/')) {
+            articles.push({ title, link });
+            if (articles.length === 2) break;
+          }
+        }
 
         if (articles.length === 0) {
           document.getElementById('articles-grid').innerHTML = '<p>暫無文章</p>';
@@ -901,13 +913,11 @@
         }
 
         let html = '';
-        articles.forEach((item, index) => {
-          const [slug, articleData] = item;
+        articles.forEach((article, index) => {
           const isMainCard = index === 0;
-          const tags = articleData.tags || [];
-          const firstTag = tags[0] || '文章';
-          const tagColor = tags.includes('親子相處') || firstTag === '親子相處' ? 'card-tag-pink' : 'card-tag-green';
-          const articleUrl = `/notes/${slug}`;
+          const articleUrl = article.link.replace('https://shirleycounpsy.github.io/notes', '/notes');
+          const tagColor = article.title.includes('親子') ? 'card-tag-pink' : 'card-tag-green';
+          const tag = article.title.includes('親子') ? '親子相處' : '輔導知識';
 
           if (isMainCard) {
             html += `
@@ -919,9 +929,9 @@
                     <div class="card-leaf-2"></div>
                   </div>
                   <div class="article-card-body">
-                    <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
-                    <h3 class="card-title">${articleData.title}</h3>
-                    <p class="card-meta">${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
+                    <p class="card-tag ${tagColor}">${tag}</p>
+                    <h3 class="card-title">${article.title}</h3>
+                    <p class="card-meta">5 分鐘閱讀</p>
                   </div>
                 </div>
               </a>
@@ -930,9 +940,9 @@
             html += `
               <a href="${articleUrl}" style="text-decoration: none; color: inherit;">
                 <div class="article-card-sm">
-                  <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
-                  <h3 class="card-title">${articleData.title}</h3>
-                  <p class="card-meta">${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
+                  <p class="card-tag ${tagColor}">${tag}</p>
+                  <h3 class="card-title">${article.title}</h3>
+                  <p class="card-meta">5 分鐘閱讀</p>
                 </div>
               </a>
             `;
