@@ -887,73 +887,47 @@
   </footer>
 
   <script>
-    async function loadLatestArticles() {
-      try {
-        const response = await fetch('/notes/index.xml');
-        const rssText = await response.text();
-        const parser = new DOMParser();
-        const rssDoc = parser.parseFromString(rssText, 'text/xml');
+    function loadLatestArticles() {
+      const articles = [
+        { title: '曾經，你也是那個不說的孩子', url: '/notes/文章/曾經，你也是那個不說的孩子', tag: '親子相處', tagColor: 'card-tag-pink' },
+        { title: '感同身受的距離', url: '/notes/文章/感同身受的距離', tag: '自我成長', tagColor: 'card-tag-green' }
+      ];
 
-        const items = rssDoc.querySelectorAll('item');
-        const articles = [];
+      let html = '';
+      articles.forEach((article, index) => {
+        const isMainCard = index === 0;
 
-        for (let item of items) {
-          const title = item.querySelector('title')?.textContent || '';
-          const link = item.querySelector('link')?.textContent || '';
-
-          if (link.includes('/文章/')) {
-            articles.push({ title, link });
-            if (articles.length === 2) break;
-          }
-        }
-
-        if (articles.length === 0) {
-          document.getElementById('articles-grid').innerHTML = '<p>暫無文章</p>';
-          return;
-        }
-
-        let html = '';
-        articles.forEach((article, index) => {
-          const isMainCard = index === 0;
-          const articleUrl = article.link.replace('https://shirleycounpsy.github.io/notes', '/notes');
-          const tagColor = article.title.includes('親子') ? 'card-tag-pink' : 'card-tag-green';
-          const tag = article.title.includes('親子') ? '親子相處' : '輔導知識';
-
-          if (isMainCard) {
-            html += `
-              <a href="${articleUrl}" style="text-decoration: none; color: inherit;">
-                <div class="article-card-main">
-                  <div class="article-card-image">
-                    <div class="card-blob"></div>
-                    <div class="card-leaf"></div>
-                    <div class="card-leaf-2"></div>
-                  </div>
-                  <div class="article-card-body">
-                    <p class="card-tag ${tagColor}">${tag}</p>
-                    <h3 class="card-title">${article.title}</h3>
-                    <p class="card-meta">5 分鐘閱讀</p>
-                  </div>
+        if (isMainCard) {
+          html += `
+            <a href="${article.url}" style="text-decoration: none; color: inherit;">
+              <div class="article-card-main">
+                <div class="article-card-image">
+                  <div class="card-blob"></div>
+                  <div class="card-leaf"></div>
+                  <div class="card-leaf-2"></div>
                 </div>
-              </a>
-            `;
-          } else {
-            html += `
-              <a href="${articleUrl}" style="text-decoration: none; color: inherit;">
-                <div class="article-card-sm">
-                  <p class="card-tag ${tagColor}">${tag}</p>
+                <div class="article-card-body">
+                  <p class="card-tag ${article.tagColor}">${article.tag}</p>
                   <h3 class="card-title">${article.title}</h3>
-                  <p class="card-meta">5 分鐘閱讀</p>
+                  <p class="card-meta">4 分鐘閱讀</p>
                 </div>
-              </a>
-            `;
-          }
-        });
+              </div>
+            </a>
+          `;
+        } else {
+          html += `
+            <a href="${article.url}" style="text-decoration: none; color: inherit;">
+              <div class="article-card-sm">
+                <p class="card-tag ${article.tagColor}">${article.tag}</p>
+                <h3 class="card-title">${article.title}</h3>
+                <p class="card-meta">3 分鐘閱讀</p>
+              </div>
+            </a>
+          `;
+        }
+      });
 
-        document.getElementById('articles-grid').innerHTML = html;
-      } catch (error) {
-        console.error('Failed to load articles:', error);
-        document.getElementById('articles-grid').innerHTML = '<p>暫無法載入文章</p>';
-      }
+      document.getElementById('articles-grid').innerHTML = html;
     }
 
     document.addEventListener('DOMContentLoaded', loadLatestArticles);
