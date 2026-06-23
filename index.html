@@ -892,10 +892,8 @@
         const response = await fetch('/notes/static/contentIndex.json');
         const data = await response.json();
 
-        const articles = Object.entries(data)
-          .filter(([slug]) => slug.startsWith('文章/'))
-          .reverse()
-          .slice(0, 2);
+        const allArticles = Object.entries(data).filter(([slug]) => slug.startsWith('文章/'));
+        const articles = allArticles.slice(-2).reverse();
 
         if (articles.length === 0) {
           document.getElementById('articles-grid').innerHTML = '<p>暫無文章</p>';
