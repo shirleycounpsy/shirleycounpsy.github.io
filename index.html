@@ -833,27 +833,10 @@
   <section class="section">
     <p class="section-label">近期分享</p>
     <h2 class="section-title heading">最新文章</h2>
-    <div class="articles-grid">
-
-      <div class="article-card-main">
-        <div class="article-card-image">
-          <div class="card-blob"></div>
-          <div class="card-leaf"></div>
-          <div class="card-leaf-2"></div>
-        </div>
-        <div class="article-card-body">
-          <p class="card-tag card-tag-pink">親子相處</p>
-          <h3 class="card-title">日租家庭：界線與連結的反思</h3>
-          <p class="card-meta">2025年 &nbsp;·&nbsp; 5 分鐘閱讀</p>
-        </div>
+    <div class="articles-grid" id="articles-grid">
+      <div style="text-align: center; padding: 3rem; color: #9A8A78;">
+        加載中...
       </div>
-
-      <div class="article-card-sm">
-        <p class="card-tag card-tag-green">自我成長</p>
-        <h3 class="card-title">敘事督導後感想</h3>
-        <p class="card-meta">2025年 &nbsp;·&nbsp; 3 分鐘閱讀</p>
-      </div>
-
     </div>
     <a class="view-all" href="https://shirleycounpsy.github.io/notes/%E6%96%87%E7%AB%A0/">瀏覽所有文章 →</a>
   </section>
@@ -902,6 +885,71 @@
       <p class="footer-copy">© 2026 黃家盈</p>
     </div>
   </footer>
+
+  <script>
+    async function loadLatestArticles() {
+      try {
+        const response = await fetch('https://shirleycounpsy.github.io/notes/static/contentIndex.json');
+        const data = await response.json();
+
+        const articles = Object.entries(data)
+          .filter(([slug]) => slug.startsWith('文章/'))
+          .reverse()
+          .slice(0, 2);
+
+        if (articles.length === 0) {
+          document.getElementById('articles-grid').innerHTML = '<p>暫無文章</p>';
+          return;
+        }
+
+        let html = '';
+        articles.forEach((item, index) => {
+          const [slug, data] = item;
+          const isMainCard = index === 0;
+          const tags = data.tags || [];
+          const firstTag = tags[0] || '文章';
+          const tagColor = tags.includes('親子相處') || firstTag === '親子相處' ? 'card-tag-pink' : 'card-tag-green';
+          const articleUrl = `https://shirleycounpsy.github.io/notes/${slug}`;
+
+          if (isMainCard) {
+            html += `
+              <a href="${articleUrl}" style="text-decoration: none; color: inherit;">
+                <div class="article-card-main">
+                  <div class="article-card-image">
+                    <div class="card-blob"></div>
+                    <div class="card-leaf"></div>
+                    <div class="card-leaf-2"></div>
+                  </div>
+                  <div class="article-card-body">
+                    <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
+                    <h3 class="card-title">${data.title}</h3>
+                    <p class="card-meta">2025年 &nbsp;·&nbsp; ${Math.ceil(data.content.length / 300)} 分鐘閱讀</p>
+                  </div>
+                </div>
+              </a>
+            `;
+          } else {
+            html += `
+              <a href="${articleUrl}" style="text-decoration: none; color: inherit;">
+                <div class="article-card-sm">
+                  <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
+                  <h3 class="card-title">${data.title}</h3>
+                  <p class="card-meta">2025年 &nbsp;·&nbsp; ${Math.ceil(data.content.length / 300)} 分鐘閱讀</p>
+                </div>
+              </a>
+            `;
+          }
+        });
+
+        document.getElementById('articles-grid').innerHTML = html;
+      } catch (error) {
+        console.error('Failed to load articles:', error);
+        document.getElementById('articles-grid').innerHTML = '<p>暫無法載入文章</p>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadLatestArticles);
+  </script>
 
 </body>
 </html>
