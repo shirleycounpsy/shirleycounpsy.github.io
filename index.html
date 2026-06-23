@@ -894,7 +894,11 @@
 
         const articles = Object.entries(data)
           .filter(([slug]) => slug.startsWith('文章/'))
-          .reverse()
+          .sort((a, b) => {
+            const dateA = new Date(a[1].filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0] || 0);
+            const dateB = new Date(b[1].filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0] || 0);
+            return dateB - dateA;
+          })
           .slice(0, 2);
 
         if (articles.length === 0) {
@@ -904,9 +908,9 @@
 
         let html = '';
         articles.forEach((item, index) => {
-          const [slug, data] = item;
+          const [slug, articleData] = item;
           const isMainCard = index === 0;
-          const tags = data.tags || [];
+          const tags = articleData.tags || [];
           const firstTag = tags[0] || '文章';
           const tagColor = tags.includes('親子相處') || firstTag === '親子相處' ? 'card-tag-pink' : 'card-tag-green';
           const articleUrl = `/notes/${slug}`;
@@ -922,8 +926,8 @@
                   </div>
                   <div class="article-card-body">
                     <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
-                    <h3 class="card-title">${data.title}</h3>
-                    <p class="card-meta">2025年 &nbsp;·&nbsp; ${Math.ceil(data.content.length / 300)} 分鐘閱讀</p>
+                    <h3 class="card-title">${articleData.title}</h3>
+                    <p class="card-meta">${new Date(articleData.filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0]).getFullYear()}年 &nbsp;·&nbsp; ${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
                   </div>
                 </div>
               </a>
@@ -933,8 +937,8 @@
               <a href="${articleUrl}" style="text-decoration: none; color: inherit;">
                 <div class="article-card-sm">
                   <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
-                  <h3 class="card-title">${data.title}</h3>
-                  <p class="card-meta">2025年 &nbsp;·&nbsp; ${Math.ceil(data.content.length / 300)} 分鐘閱讀</p>
+                  <h3 class="card-title">${articleData.title}</h3>
+                  <p class="card-meta">${new Date(articleData.filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0]).getFullYear()}年 &nbsp;·&nbsp; ${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
                 </div>
               </a>
             `;
