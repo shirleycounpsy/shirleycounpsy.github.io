@@ -894,11 +894,7 @@
 
         const articles = Object.entries(data)
           .filter(([slug]) => slug.startsWith('文章/'))
-          .sort((a, b) => {
-            const dateA = new Date(a[1].filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0] || 0);
-            const dateB = new Date(b[1].filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0] || 0);
-            return dateB - dateA;
-          })
+          .reverse()
           .slice(0, 2);
 
         if (articles.length === 0) {
@@ -927,7 +923,7 @@
                   <div class="article-card-body">
                     <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
                     <h3 class="card-title">${articleData.title}</h3>
-                    <p class="card-meta">${new Date(articleData.filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0]).getFullYear()}年 &nbsp;·&nbsp; ${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
+                    <p class="card-meta">${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
                   </div>
                 </div>
               </a>
@@ -938,7 +934,7 @@
                 <div class="article-card-sm">
                   <p class="card-tag ${tagColor}">${tags[0] || '文章'}</p>
                   <h3 class="card-title">${articleData.title}</h3>
-                  <p class="card-meta">${new Date(articleData.filePath.match(/(\d{4})-(\d{2})-(\d{2})/)?.[0]).getFullYear()}年 &nbsp;·&nbsp; ${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
+                  <p class="card-meta">${Math.ceil(articleData.content.length / 300)} 分鐘閱讀</p>
                 </div>
               </a>
             `;
