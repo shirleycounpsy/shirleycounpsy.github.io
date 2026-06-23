@@ -889,7 +889,7 @@
   <script>
     async function loadLatestArticles() {
       try {
-        const response = await fetch('https://shirleycounpsy.github.io/notes/static/contentIndex.json');
+        const response = await fetch('/notes/static/contentIndex.json');
         const data = await response.json();
 
         const articles = Object.entries(data)
@@ -909,7 +909,7 @@
           const tags = data.tags || [];
           const firstTag = tags[0] || '文章';
           const tagColor = tags.includes('親子相處') || firstTag === '親子相處' ? 'card-tag-pink' : 'card-tag-green';
-          const articleUrl = `https://shirleycounpsy.github.io/notes/${slug}`;
+          const articleUrl = `/notes/${slug}`;
 
           if (isMainCard) {
             html += `
